@@ -1,0 +1,14 @@
+# Ignore virtual environment
+venv/
+myvenv/
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore large files and raw datasets
+data/raw/
+data/processed/
+
+# API keys (just in case)
+*.json
+*.env
