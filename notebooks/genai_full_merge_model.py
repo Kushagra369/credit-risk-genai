@@ -3,6 +3,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, roc_auc_score, accuracy_score
 from xgboost import XGBClassifier
 from imblearn.over_sampling import RandomOverSampler
+import joblib
+
 
 # --- Load All Data ---
 
@@ -51,6 +53,8 @@ print(f"✅ Resampled shape: {X_train_res.shape}")
 print("\n🚀 Training Final XGBoost Model...")
 model = XGBClassifier(eval_metric='logloss', use_label_encoder=False)
 model.fit(X_train_res, y_train_res)
+
+joblib.dump(X_train_res.columns.tolist(), "models/final_feature_names.pkl")
 
 # --- Evaluate ---
 y_pred = model.predict(X_test)
